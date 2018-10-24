@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Mood in Wood - Créations artisanales en bois, fabriquées en Ardèche.">
+    <meta name="keywords" content="créations, artisanat, Ardèche, woodcraft, bois, local, bijoux">
+    <!-- Viewport responsive Webdesign -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><?= htmlspecialchars($title); ?> - Mood in Wood</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= url('uploads/img/favicon.png'); ?>">
+
+
+    <!-- CDN Google Fonts - 'Lato' & 'Playfair Display' -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+
+    <!-- Normalize.css & Feuilles de style -->
+    <link rel="stylesheet" type="text/css" href="<?= url('ressources/css/normalize.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?= url('ressources/css/stylesheet.css'); ?>">
+
+    <!-- Script FontAwesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
+    <!-- CDN jQuery 3.3.1.min -->
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+<!-- ************* HEADER **************** -->
+    <header>
+      <!-- * BANNER * -->
+        <div id="banner" role="banner">
+          <a href="<?= url(''); ?>"><img id="logobanner" src="<?= url('uploads/img/logo_MiW_white200.png'); ?>" alt="logo" /></a>
+            <h1>Mood in Wood</h1>
+            <p>Créations artisanales made in Ardèche</p>
+        </div>
+
+        <!-- * NAV * -->
+        <nav>
+          <div id="hamburger-menu">
+              <div id="line1"></div>
+              <div id="line2"></div>
+              <div id="line3"></div>
+            </div>
+            <a href="<?= url(''); ?>"><img id="logo" src="<?= url('uploads/img/logo_MiW_white.png'); ?>" alt="logo Mood in Wood" /></a>
+
+          <!-- Div permettant de récupérer la nav en JS afin de la greffer dans la sidebar -->
+          <div id="nav-content">
+
+          <ul class="wrapper">
+            <li><a href="<?= url('')."#projet"; ?>">La démarche</a></li>
+            <li><a href="<?= url('news/page/1'); ?>">Actualités</a></li>
+            <li><a href="<?= url('creations') ?>">Créations</a>
+              <div class="secondMenu">
+                <ul><a><span>Les bois</span></a>
+                  <li><a href="<?= url('creations/wood/acacia');  ?>">Acacia</a></li>
+                  <li><a href="<?= url('creations/wood/genevrier');  ?>">Genévrier</a></li>
+                  <li><a href="<?= url('creations/wood/if');  ?>">If</a></li>
+                  <li><a href="<?= url('creations/wood/orme');  ?>">Orme</a></li>
+                  <li><a href="<?= url('creations/wood/pommier');  ?>">Pommier</a></li>
+                  <li><a href="<?= url('creations/wood/varie');  ?>">Variés</a></li>
+                </ul>
+
+                <ul><a href="<?= url('creations/collec/naturelle'); ?>"><span>Les Naturelles</span></a>
+                  <li><a href="<?= url('creations/collec/naturelle/type/boucles');  ?>">Boucles d'oreilles</a></li>
+                  <li><a href="<?= url('creations/collec/naturelle/type/bague');  ?>">Bagues</a></li>
+                </ul>
+
+                <ul><a href="<?= url('creations/collec/sertie'); ?>"><span>Les Serties</span></a>
+                  <li><a href="<?= url('creations/collec/sertie/type/boucles');  ?>">Boucles d'oreilles</a></li>
+                  <li><a href="<?= url('creations/collec/sertie/type/bague');  ?>">Bagues</a></li>
+                  <li><a href="<?= url('creations/collec/sertie/type/boutons');  ?>">Boutons de manchette</a></li>
+                </ul>
+
+                <ul><a><span>Les catégories</span></a>
+                  <li><a href="<?= url('creations/type/boucles'); ?>">Boucles d'oreilles</a></li>
+                  <li><a href="<?= url('creations/type/bague'); ?>">Bagues</a></li>
+                  <li><a href="<?= url('creations/type/boutons'); ?>">Boutons de manchette</a></li>
+                </ul>
+              </div>
+            </li>
+            <li><a href="<?= url('')."#about"; ?>">À propos</a></li>
+            <li><a href="<?= url('contact'); ?>">Contact</a></li>
+            <?php if(isset($_SESSION['usr_id']) && $_SESSION['usr_id'] == 1): ?>
+              <li><a href="<?= url('admin'); ?>">Administration</a></li>
+            <?php endif; ?>
+          </ul>
+        </div>
+
+        </nav>
+        <!-- Sidebar cachée qui sera activée via click en mode tablette et mobile -->
+        <div id="sidebar"></div>
+    </header>
+
+
+    <!-- **************** MAIN / WRAPPER && INCLUSION DU TEMPLATE ENFANT ****************** -->
+    <main>
+
+      <div class="wrapper">
+
+        <?php if(!empty($_SESSION['success']) || !empty($_SESSION['errors'])): ?>
+            <?= flash(); ?>
+        <?php endif; ?>
+
+        <?php include($template.'.phtml') ?>
+
+      </div>
+
+
+    </main>
+
+
+    <!-- **************** FOOTER ****************** -->
+    <footer>
+      <ul id="socialNetworks">
+        <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+        <li><a href="https://www.facebook.com/moodinwood/"><i class="fab fa-facebook-square"></i></a></li>
+        <li><a href="https://www.instagram.com/moodinwood07/"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+
+      <div id="copyrights">
+        <p>Webdesign — Intégration — Développement par <a href="https://www.linkedin.com/in/simon-escure-4714a4161/">Simon Escure</a> — Tous droits réservés — 2018</p>
+      </div>
+   </footer>
+
+  <!-- ************** Scripts personnels *************** -->
+  <script src="<?= url('ressources/js/app.js'); ?>"></script>
+
+  </body>
+</html>

@@ -4,3 +4,23 @@ $dark: hsl(0,0%,11%);
 $dark6: hsla(0,0%,11%,.6);
 $beige: hsl(40,47%,82%);
 $light: hsl(0, 0%, 98%);
+$highlight: hsl(142, 69%, 38%);
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans:400,700');
+
+@font-face {
+  font-family: 'highlander';
+  src: url('../fonts/highlander-webfont.woff2') format('woff2'),
+       url('../fonts/highlander-webfont.woff') format('woff');
+  font-weight: lighter;
+  font-style: normal;
+}
+
+
+
+$opensans: 'Open Sans', Arial, Helvetica, sans-serif;
+$lato: 'Lato', Arial, Helvetica, sans-serif;
+$cursive: 'highlander', serif;
+$body-size: 1rem;
+$line-height: ($body-size * 1.618);

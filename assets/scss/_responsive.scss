@@ -1,0 +1,65 @@
+$menu-width: 250px;
+
+@media only screen and (max-width: 750px) {
+  //.pusher, .site-container { height: 100%; }
+  .site-container { overflow: hidden; }
+  .pusher {
+    height: 100%;
+    @include transition(all, 0.3s, ease);
+    @include translateX(0);
+  }
+  .banner {
+    display: none;
+  }
+
+  header {
+    position: static;
+  }
+
+  #hamburger-menu {
+    display: block;
+    height: $nav-height;
+    float: right;
+  }
+
+  .menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: $dark;
+    width: $menu-width;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include translateX($menu-width);
+  }
+
+  main {
+    position: absolute;
+    top: $nav-height;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex: 0 1 auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.sidebar-open {
+  //.pusher, .site-container { height: 100%; }
+  & .pusher {  @include translateX($menu-width * -1); }
+  .site-backdrop { 
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $dark6;
+  }
+
+}

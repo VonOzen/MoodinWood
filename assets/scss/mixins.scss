@@ -51,3 +51,24 @@
   -ms-transform: skew($x) scaleX($y);
   transform: skew($x) scaleX($y);
 }
+
+@mixin translateX($value) {
+  -webkit-transform: translateX($value);
+  -ms-transform: translateX($value);
+  transform: translateX($value);
+}
+
+@mixin wrapper {
+  .wrapper {
+    margin: 0 auto;
+    @media only screen and (max-width: 750px) {
+      width: 100%;
+    }
+    @media only screen and (min-width: 751px) and (max-width: 1024px) {
+      width: 90%;
+    }
+    @media only screen and (min-width: 1065px) {
+      width: 70%;
+    }
+  }
+}

@@ -58,6 +58,14 @@
   transform: translateX($value);
 }
 
+@function darken($color) {
+  @return $color - 35;
+}
+
+@function lighten($color) {
+  @return $color + 15;
+}
+
 @mixin wrapper {
   .wrapper {
     margin: 0 auto;

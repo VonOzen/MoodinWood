@@ -1,0 +1,8 @@
+<article class="post">
+  <img src="{{ post.coverImage }}" alt="Image de {{ post.title }}">
+  <div>
+    <h3 class="post-title">{{ post.title }}</h3>
+    <p>{{ post.preview }}</p>
+    <a href="{{ path('posts_show', {'slug': post.slug}) }}" class="learn-more-btn">Lire plus</a>
+  </div>
+</article>

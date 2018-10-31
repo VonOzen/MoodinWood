@@ -32,7 +32,7 @@ class Post
     private $createdAt;
 
     /**
-     * @ORM\Column(type="string", length=500, nullable=true)
+     * @ORM\Column(type="string", length=500)
      */
     private $coverImage;
 
@@ -40,6 +40,11 @@ class Post
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
+
+    /**
+     * @ORM\Column(type="string", length=400)
+     */
+    private $preview;
 
     public function getId(): ?int
     {
@@ -102,6 +107,18 @@ class Post
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getPreview(): ?string
+    {
+        return $this->preview;
+    }
+
+    public function setPreview(string $preview): self
+    {
+        $this->preview = $preview;
 
         return $this;
     }

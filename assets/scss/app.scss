@@ -398,6 +398,55 @@ footer {
   }
 }
 
+/* ----------------------------------------- *\
+    FORMS
+\* ----------------------------------------- */
+form {
+  padding: 2rem;
+
+  input[type="text"], input[type="url"], textarea {
+    display: block;
+    width: 100%;
+
+    padding: .4rem .75rem;
+
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid $light-grey;
+    border-radius: .25rem;
+
+    color: $mid-grey;
+
+    transition: all 200ms ease-in-out;
+
+    &:focus {
+      color: $dark-grey;
+      border-color: $highlight;
+      outline: 0;
+      @include shadow(0, 0, 0.5rem, $highlight3);
+    }
+  }
+
+  button {
+    margin: 1rem 0;
+    padding: .5rem 1rem;
+
+    border: none;
+    border-radius: .25rem;
+    background-color: $highlight;
+
+    color: $light;
+    font-family: $lato;
+    font-size: 1rem;
+
+    cursor: pointer;
+    transition: background-color 300ms ease-in-out;
+
+    &:hover {
+      background-color: darken($highlight);
+    }
+  }
+}
 
 /* ----------------------------------------- *\
     RESPONSIVE

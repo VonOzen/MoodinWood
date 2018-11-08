@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'article "<strong>{{ post.title }}</strong>"{% endblock %}
+
+{% block body %}
+
+<div class="wrapper">
+
+  {{ form_start(form) }}
+  {{ form_widget(form) }}
+  <button type="submit"><i class="fas fa-save"></i> Modifier l'article</button>
+  {{ form_end(form) }}
+
+
+</div>
+
+{% endblock %}

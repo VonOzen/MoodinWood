@@ -20,6 +20,16 @@
         {% include 'partials/header.html.twig' %}
 
         <main class="wrapper">
+            <!-- Flash messages -->
+            {% for label, messages in app.flashes %}
+            <div class="container">
+                <div class="alert alert-{{ label }}">
+                    {% for message in messages %}
+                        {{ message | raw }}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
             
             {% block body %}{% endblock %}
             

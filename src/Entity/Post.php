@@ -27,7 +27,7 @@ class Post
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Le titre est obligatoire")
-     * @Assert\Length(min="5", max="100", minMessage="Le titre comprendre au moins 5 caractères", maxMessage="Le titre doit faire moins de 100 caractères")
+     * @Assert\Length(min="5", max="100", minMessage="Le titre doit comprendre au moins 5 caractères", maxMessage="Le titre doit faire moins de 100 caractères")
      */
     private $title;
 
@@ -60,6 +60,37 @@ class Post
      * @Assert\Length(min="10", minMessage="L'introduction doit comprendre au moins 10 caractères", max="400", maxMessage="L'introduction doit faire moins de 400 caractères")
      */
     private $preview;
+
+    /**
+     * Set createdAt field before persist in database (callback)
+     * 
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     *
+     * @return void
+     */
+    public function prePersist()
+    {
+        if (empty($this->createdAt)) {
+            $this->createdAt = new \DateTime();
+        }
+    }
+
+    /**
+     * Initialize slug based on the title - Using Cocur's Slugify
+     * 
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     *
+     * @return void
+     */
+    public function initializeSlug()
+    {
+        if (empty($this->slug)) {
+            $slugify    = new Slugify();
+            $this->slug = $slugify->slugify($this->title);
+        }
+    }
 
     public function getId(): ?int
     {

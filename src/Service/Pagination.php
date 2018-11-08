@@ -51,7 +51,7 @@ class Pagination
 
     # get repository
     $repo = $this->manager->getRepository($this->entityClass);
-    $data = $repo->findBy([], [], $this->limit, $offset);
+    $data = $repo->findBy([], ['id' => 'DESC'], $this->limit, $offset);
 
     # send data
     return $data;

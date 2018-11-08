@@ -22,6 +22,7 @@ $medium: 1024px;
     display: block;
     height: $nav-height;
     float: right;
+    margin-right: .75rem;
   }
   
   .menu {
@@ -56,6 +57,15 @@ $medium: 1024px;
     flex-direction: column;
     .post {
       flex-basis: 100%;
+    }
+  }
+
+  .post-details {
+    img {
+      display: block;
+      margin: 1.5rem auto;
+      float: none;
+      width: 100%;
     }
   }
 }

@@ -24,7 +24,7 @@ class PostController extends AbstractController
     {
         $pagination->setEntityClass(Post::class)
                    ->setCurrentPage($page)
-                   ->setLimit(5);
+                   ->setLimit(4);
         return $this->render('post/index.html.twig', [
             'pagination' => $pagination
         ]);

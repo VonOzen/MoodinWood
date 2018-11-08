@@ -5,7 +5,13 @@
 {% block body %}
 <article class="post-details">
   <h2>{{ post.title }}</h2>
-
+  <img src="{{ post.coverImage }}" alt="">
+  <div>
+    {{ post.content|raw }}
+    <span class="date">Posté le {{ post.createdAt|date('d-m-Y') }}</span>
+  </div>
+  <a href="{{ path('posts_index') }}" class="button clear"><i class="fas fa-arrow-left"></i> Retour aux actualités</a>
+  <div class="clear"></div>
 </article>
 
 {% endblock %}

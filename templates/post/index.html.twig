@@ -4,11 +4,14 @@
 
 {% block body %}
 
-<h1>Toutes les news Mood in Wood !</h1>
+<h2>Actualités Mood in Wood</h2>
 
-{% for post in pagination.data %}
-    {% include 'partials/posts/_post.html.twig' %}
-{% endfor %}
+<section class="posts">
+    {% for post in pagination.data %}
+        {% include 'partials/posts/_post.html.twig' %}
+    {% endfor %}
+</section>
+
 
 {{ pagination.display() }}
 

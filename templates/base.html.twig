@@ -12,29 +12,22 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        <div class="site-container">
-            <div class="pusher">
-            
-                <div class="banner" role="banner">
-                    <a href="{{ path('homepage') }}"><img id="banner-logo" src="{{ asset('build/img/logo_MiW_white200.png') }}" alt="logo Mood in Wood" /></a>
-                    <h1>Mood in Wood</h1>
-                    <p>Créations artisanales made in Ardèche</p>
-                </div>
-                {% include 'partials/header.html.twig' %}
-
-                <main class="wrapper">
-                    
-                    {% block body %}{% endblock %}
-                    
-                </main>
-
-                <div class="site-backdrop" id="backdrop"></div>
-
-                {% include 'partials/footer.html.twig' %}
-
-                <script src="{{ asset('build/js/app.js') }}"></script>
-                {% block javascripts %}{% endblock %}
-            </div>
+        <div class="banner" role="banner">
+            <a href="{{ path('homepage') }}"><img id="banner-logo" src="{{ asset('build/img/logo_MiW_white200.png') }}" alt="logo Mood in Wood" /></a>
+            <h1>Mood in Wood</h1>
+            <p>Créations artisanales made in Ardèche</p>
         </div>
+        {% include 'partials/header.html.twig' %}
+
+        <main class="wrapper">
+            
+            {% block body %}{% endblock %}
+            
+        </main>
+
+        {% include 'partials/footer.html.twig' %}
+
+        <script src="{{ asset('build/js/app.js') }}"></script>
+        {% block javascripts %}{% endblock %}
     </body>
 </html>

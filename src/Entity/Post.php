@@ -2,10 +2,18 @@
 
 namespace App\Entity;
 
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
+ * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity(
+ *  fields={"title"},
+ *  message="Ce titre d'article est déjà utilisé"
+ * )
  */
 class Post
 {
@@ -18,11 +26,15 @@ class Post
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le titre est obligatoire")
+     * @Assert\Length(min="5", max="100", minMessage="Le titre comprendre au moins 5 caractères", maxMessage="Le titre doit faire moins de 100 caractères")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="L'article doit avoir un contenu")
+     * @Assert\Length(min="50", minMessage="Le contenu de l'article doit comprendre au moins 50 caractères")
      */
     private $content;
 
@@ -33,6 +45,7 @@ class Post
 
     /**
      * @ORM\Column(type="string", length=500)
+     * @Assert\Url(message="Le format de l'URL ne semble pas être valide")
      */
     private $coverImage;
 
@@ -43,6 +56,8 @@ class Post
 
     /**
      * @ORM\Column(type="string", length=400)
+     * @Assert\NotBlank(message="Le texte d'introduction est obligatoire")
+     * @Assert\Length(min="10", minMessage="L'introduction doit comprendre au moins 10 caractères", max="400", maxMessage="L'introduction doit faire moins de 400 caractères")
      */
     private $preview;
 

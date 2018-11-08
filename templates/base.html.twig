@@ -23,7 +23,7 @@
             <!-- Flash messages -->
             {% for label, messages in app.flashes %}
             <div class="container">
-                <div class="alert alert-{{ label }}">
+                <div class="alert {{ label }}">
                     {% for message in messages %}
                         {{ message | raw }}
                     {% endfor %}

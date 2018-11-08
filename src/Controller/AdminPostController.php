@@ -77,5 +77,27 @@ class AdminPostController extends AbstractController
         ]);
     }
 
+    /**
+     * Allow admin to delete a post
+     * 
+     * @Route("admin/posts/{id}/delete", name="admin_posts_delete")
+     *
+     * @param Post $post
+     * @param ObjectManager $manager
+     * @return Response
+     */
+    public function delete(Post $post, ObjectManager $manager)
+    {
+        $manager->remove($post);
+        $manager->flush();
+
+        $this->addFlash(
+            'success',
+            "L'article \"<strong>{$post->getTitle()}</strong>\" a été correctement supprimé"
+        );
+
+        return $this->redirectToRoute('posts_index');
+    }
+
 
 }

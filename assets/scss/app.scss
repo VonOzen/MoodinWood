@@ -404,11 +404,20 @@ footer {
 form {
   padding: 2rem;
 
+  label {
+    font: {
+      family: $lato;
+      color: $dark-grey;
+      weight: bolder;
+    }
+  }
+
   input[type="text"], input[type="url"], textarea {
     display: block;
     width: 100%;
 
-    padding: .4rem .75rem;
+    margin: .25rem 0 1.5rem 0;
+    padding: .5rem .75rem;
 
     background-color: #fff;
     background-clip: padding-box;
@@ -425,6 +434,14 @@ form {
       outline: 0;
       @include shadow(0, 0, 0.5rem, $highlight3);
     }
+
+    &::placeholder {
+      font-family: $opensans;
+    }
+  }
+
+  textarea {
+    min-height: 200px;
   }
 
   button {
@@ -447,6 +464,42 @@ form {
     }
   }
 }
+
+/* ----------------------------------------- *\
+    FLASH
+\* ----------------------------------------- */
+
+.alert {
+  width: 80%;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: .25rem;
+
+  &.success {
+    background-color: hsl(134, 49%, 85%);
+    color: hsl(134, 61%, 21%);
+    border: 1px solid darken(hsl(134, 49%, 85%));
+  }
+
+  &.danger {
+    background-color: hsl(355, 70%, 91%);
+    color: hsl(356, 70%, 36%);
+    border: 1px solid darken(hsl(355, 70%, 91%));
+  }
+
+  &.warning {
+    background-color: hsl(46, 100%, 90%);
+    color: hsl(45, 94%, 27%);
+    border: 1px solid darken(hsl(46, 100%, 90%));
+  }
+
+  &.info {
+    background-color: hsl(189, 53%, 88%);
+    color: hsl(189, 78%, 21%);
+    border: 1px solid darken(hsl(189, 53%, 88%));
+  }
+}
+
 
 /* ----------------------------------------- *\
     RESPONSIVE

@@ -4,10 +4,14 @@
 
 {% block body %}
 
+<section>
+  <h1>Editer l'article : "{{ post.title }}"</h1>
 
+</section>
   {{ form_start(form) }}
   {{ form_widget(form) }}
-  <button type="submit"><i class="fas fa-save"></i> Modifier l'article</button>
+  <button type="submit" class="button info"><i class="fas fa-save"></i> Modifier l'article</button>
+  <a href="{{ path('admin_posts_index') }}" class="button secondary"><i class="fas fa-arrow-circle-left"></i>Retour aux articles</a>
   {{ form_end(form) }}
 
 

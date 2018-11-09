@@ -69,6 +69,21 @@ $medium: 1024px;
       width: 100%;
     }
   }
+
+  /* ----------------------------------------- *\
+    ADMIN
+  \* ----------------------------------------- */
+  table {
+    tbody, thead {
+      tr {
+        td {
+          &:nth-of-type(3) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: $small + 1px) and (max-width: $medium) {

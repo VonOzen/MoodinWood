@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Form\PostType;
+use App\Service\Pagination;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,6 +13,28 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminPostController extends AbstractController
 {
+    
+    /**
+     * Get all posts (administration purpose)
+     * 
+     * @Route("admin/posts/{page<\d+>?1}", name="admin_posts_index")
+     *
+     * @param [type] $page
+     * @param Pagination $pagination
+     * @return void
+     */
+    public function index($page, Pagination $pagination) 
+    {
+        $pagination->setEntityClass(Post::class)
+                   ->setCurrentPage($page)
+                   ->setLimit(10);
+
+        return $this->render('admin/post/index.html.twig', [
+            'pagination' => $pagination
+        ]);
+    }
+
+
     /**
      * Insert a new Post into the database (only for admin)
      * 
@@ -96,7 +119,7 @@ class AdminPostController extends AbstractController
             "L'article \"<strong>{$post->getTitle()}</strong>\" a été correctement supprimé"
         );
 
-        return $this->redirectToRoute('posts_index');
+        return $this->redirectToRoute('admin_posts_index');
     }
 
 

@@ -42,6 +42,14 @@ a {
   color: inherit;
 }
 
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
 .wrapper {
   width: 70%;
   margin: 0 auto;
@@ -86,6 +94,24 @@ a {
     font-size: 2rem;
     margin-top: 50px;
     font-variant: small-caps;
+  }
+}
+
+h1 {
+  margin: 2rem auto;
+  text-align: center;
+  font: {
+    family: $lato;
+    size: 2rem;
+    weight: 700;
+  }
+  &::after {
+    display: block;
+    content: "";
+    width: 60px;
+    height: 4px;
+    margin: 1.5rem auto;
+    background-color: $highlight;
   }
 }
 
@@ -445,6 +471,10 @@ form {
   
   cursor: pointer;
   transition: background-color 300ms ease-in-out;
+
+  i {
+    margin-right: .4rem;
+  }
   
   
   &.primary {
@@ -458,6 +488,27 @@ form {
     background-color: $mid-grey;
     &:hover {
       background-color: darken($mid-grey);
+    }
+  }
+
+  &.danger {
+    background-color: $danger;
+    &:hover {
+      background-color: darken($danger);
+    }
+  }
+
+  &.info {
+    background-color: $info;
+    &:hover {
+      background-color: darken($info);
+    }
+  }
+
+  &.warning {
+    background-color: $warning;
+    &:hover {
+      background-color: darken($warning);
     }
   }
 
@@ -498,22 +549,60 @@ form {
 
   &.danger {
     background-color: hsl(355, 70%, 91%);
-    color: hsl(356, 70%, 36%);
+    color: $danger;
     border: 1px solid darken(hsl(355, 70%, 91%));
   }
 
   &.warning {
     background-color: hsl(46, 100%, 90%);
-    color: hsl(45, 94%, 27%);
+    color: $warning;
     border: 1px solid darken(hsl(46, 100%, 90%));
   }
 
   &.info {
     background-color: hsl(189, 53%, 88%);
-    color: hsl(189, 78%, 21%);
+    color: $info;
     border: 1px solid darken(hsl(189, 53%, 88%));
   }
 }
+
+
+/* ----------------------------------------- *\
+    ADMIN
+\* ----------------------------------------- */
+table {
+
+  tbody {
+    td, tr {
+      border-top: 1px solid $light-grey;
+      border-bottom: 1px solid $light-grey;
+  
+      text-align: center;
+      vertical-align: middle;
+      padding: .25rem;
+    }
+
+    tr:nth-of-type(even) {
+      background-color: #eeeeee;
+    }
+  }
+
+  thead {
+    vertical-align: middle;
+    font-weight: bolder;
+
+    td {
+      text-align: center;
+      vertical-align: middle;
+      padding: .25rem;
+    }
+  }
+
+  a {
+    display: block;
+  }
+}
+
 
 
 /* ----------------------------------------- *\

@@ -318,24 +318,6 @@ footer {
   }
 }
 
-.button {
-  display: block;
-  margin-top: 2rem;
-  float: right;
-  font-weight: 700;
-
-  i {
-    transition: all 300ms ease;
-  }
-  
-  &:hover {
-    i {
-      color: $highlight;
-      @include translateX(-8px);
-    }
-  }
-}
-
 .post-details {
   padding: 2rem;
   text-align: justify;
@@ -412,7 +394,7 @@ form {
     }
   }
 
-  input[type="text"], input[type="url"], textarea {
+  input, textarea {
     display: block;
     width: 100%;
 
@@ -444,27 +426,56 @@ form {
     min-height: 200px;
   }
 
-  button {
-    margin: 1rem 0;
-    padding: .5rem 1rem;
+}
 
-    border: none;
-    border-radius: .25rem;
+.button {
+  margin: 1rem 0;
+  padding: .5rem 1rem;
+
+  border: none;
+  border-radius: .25rem;
+  
+  color: $light;
+  font-family: $lato;
+  font-size: 1rem;
+  
+  cursor: pointer;
+  transition: background-color 300ms ease-in-out;
+  
+  
+  &.primary {
     background-color: $highlight;
-
-    color: $light;
-    font-family: $lato;
-    font-size: 1rem;
-
-    cursor: pointer;
-    transition: background-color 300ms ease-in-out;
-
     &:hover {
       background-color: darken($highlight);
     }
   }
-}
+  
+  &.secondary {
+    background-color: $mid-grey;
+    &:hover {
+      background-color: darken($mid-grey);
+    }
+  }
 
+  &.with-icon {
+    display: block;
+    margin-top: 2rem;
+    float: right;
+    font-weight: 700;
+    color: $dark-grey;
+
+    i {
+      transition: all 300ms ease;
+    }
+    
+    &:hover {
+      i {
+        color: $highlight;
+        @include translateX(-8px);
+      }
+    }
+  }
+}
 /* ----------------------------------------- *\
     FLASH
 \* ----------------------------------------- */

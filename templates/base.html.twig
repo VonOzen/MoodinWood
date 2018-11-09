@@ -14,12 +14,12 @@
     <body>
         <div class="banner" role="banner">
             <a href="{{ path('homepage') }}"><img id="banner-logo" src="{{ asset('build/img/logo_MiW_white200.png') }}" alt="logo Mood in Wood" /></a>
-            <h1>Mood in Wood</h1>
+            <h1 class="main-title">Mood in Wood</h1>
             <p>Créations artisanales made in Ardèche</p>
         </div>
         {% include 'partials/header.html.twig' %}
 
-        <main class="wrapper">
+        <main>
             <!-- Flash messages -->
             {% for label, messages in app.flashes %}
             <div class="container">

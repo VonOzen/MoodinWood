@@ -6,10 +6,13 @@
     <span class="line"></span>
   </div>
   <nav class="menu">
-    <a href="{{ path('homepage') }}">Accueil</a>
-    <a href="{{ path('posts_index') }}">Actualités</a>
-    <a href="#">Créations</a>
-    <a href="#">À propos</a>
-    <a href="#">Contact</a>
+    <ul>
+      <li><a href="{{ path('homepage') }}">Accueil</a></li>
+      <li><a href="#">Créations</a></li>
+      <li><a href="#">Collections</a></li>
+      <li><a href="{{ path('posts_index') }}">Actualités</a></li>
+      <li><a href="#">À propos</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
   </nav>
 </header>

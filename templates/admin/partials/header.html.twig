@@ -5,10 +5,32 @@
     <span class="line"></span>
   </div>
   <nav class="menu">
-    <a href="{{ path('admin_dashboard') }}"><i class="fas fa-chart-bar"></i>Dashboard</a>
-    <a href="{{ path('admin_posts_index') }}"><i class="far fa-newspaper"></i>Actualités</a>
-    <a href="#"><i class="fas fa-pencil-ruler"></i>Créations</a>
-    <a href="{{ path('homepage') }}" target="_blank"><i class="fas fa-eye"></i>Voir le site</a>
-    <a href="{{ path('admin_logout') }}"><i class="fas fa-sign-out-alt"></i>Deconnexion</a>
+    <ul>
+      <li>
+        <a href="{{ path('admin_dashboard') }}">
+          <i class="fas fa-chart-bar"></i>Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="{{ path('admin_posts_index') }}">
+          <i class="far fa-newspaper"></i>Actualités
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-pencil-ruler"></i>Créations
+        </a>
+      </li>
+      <li>
+        <a href="{{ path('homepage') }}" target="_blank">
+          <i class="fas fa-eye"></i>Voir le site
+        </a>
+      </li>
+      <li>
+        <a href="{{ path('admin_logout') }}">
+          <i class="fas fa-sign-out-alt"></i>Deconnexion
+        </a>
+      </li>
+    </ul>
   </nav>
 </header>

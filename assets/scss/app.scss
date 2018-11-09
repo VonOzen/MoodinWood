@@ -97,7 +97,7 @@ em {
   }
 }
 
-h1 {
+h1:not(.main-title) {
   margin: 2rem auto;
   text-align: center;
   font: {
@@ -153,12 +153,20 @@ header {
 }
 
 nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   width: 70%;
   margin: 0 auto;
+  
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    li {
+      flex-basis: 100%;
+    }
+  }
   
   a {
 

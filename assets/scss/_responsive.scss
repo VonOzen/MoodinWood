@@ -30,13 +30,20 @@ $medium: 1024px;
     right: 0;
     background-color: $dark;
     width: $menu-width;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     transition: all 300ms ease;
     
+    ul {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      li {
+        width: 100%;
+        flex-basis: auto;
+      }
+    }
 
     @include translateX($menu-width);
 

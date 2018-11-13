@@ -9,7 +9,7 @@
     <img src="{{ post.coverImage }}" alt="">
     <div>
       {{ post.content|nl2br }}
-      <span class="date">Posté le {{ post.createdAt|date('d-m-Y') }}</span>
+      <span class="date">Posté le {{ post.formattedDate }}</span>
     </div>
     <a href="{{ path('posts_index') }}" class="button with-icon clear"><i class="fas fa-arrow-left"></i> Retour aux actualités</a>
     <div class="clear"></div>

@@ -47,4 +47,18 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * Get all products which are in stock (not sold)
+     *
+     * @return Product[]
+     */
+    public function findAllInStock()
+    {
+        return $this->createQueryBuilder('p')
+                    ->andWhere('p.inStock = true')
+                    ->getQuery()
+                    ->getResult()
+        ;
+    }
 }

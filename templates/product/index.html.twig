@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Toutes les créations Mood in Wood{% endblock %}
+
+{% block body %}
+    <section class="products">
+    
+        <h2>Toutes les créations Mood in Wood</h2>
+
+        {% for product in products %}
+            {% include 'product/_product.html.twig' %}
+        {% endfor %}
+    
+    </section>
+{% endblock %}

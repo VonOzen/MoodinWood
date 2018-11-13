@@ -102,6 +102,11 @@ class Product
         return $this->price;
     }
 
+    public function getFormattedPrice(): string
+    {
+        return number_format($this->price, 2, ',', ' ');
+    }
+
     public function setPrice(float $price): self
     {
         $this->price = $price;
@@ -119,6 +124,11 @@ class Product
         $this->inStock = $inStock;
 
         return $this;
+    }
+
+    public function getIsInStock(): string
+    {
+        return $this->inStock ? 'En stock' : 'Produit épuisé';
     }
 
     public function getSlug(): ?string

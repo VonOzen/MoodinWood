@@ -1,0 +1,43 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration des produits{% endblock %}
+
+{% block body %}
+<section>
+    <h1>Administration des produits</h1>
+
+    <table>
+    <thead>
+        <td>N°</td>
+        <td>Nom</td>
+        <td>Type</td>
+        <td>Prix</td>
+        <td>En stock</td>
+        <td>Actions</td>
+    </thead>
+    <tbody>
+        {% for product in pagination.data %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td><strong>{{ product.name }}</strong></td>
+                <td>{{ product.productType }}</td>
+                <td>{{ product.formattedPrice }}&euro;</td>
+                <td><em>{{ product.isInStock }}</em></td>
+                <td>
+                    <a href="{{ path('admin_products_edit', {'id': product.id}) }}" class="button info">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{{ path('admin_products_delete', {'id': product.id}) }}" class="button danger">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+    {{ pagination.display() }}
+</section>
+
+{% endblock %}
+

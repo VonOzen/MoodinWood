@@ -118,6 +118,7 @@ h1:not(.main-title) {
 h2 {
   margin: 2rem auto;
   text-align: center;
+  flex-basis: 100%;
   font: {
     family: $lato;
     size: 1.8rem;
@@ -373,6 +374,29 @@ footer {
 }
 
 /* ----------------------------------------- *\
+    PRODUCT
+\* ----------------------------------------- */
+.products {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 20%;
+    margin: 1rem 0;
+  }
+
+  .price {
+    font-weight: bolder;
+    font-size: 1.2rem;
+  }
+}
+
+/* ----------------------------------------- *\
     PAGINATION
 \* ----------------------------------------- */
 .pagination {
@@ -578,6 +602,7 @@ form {
     ADMIN
 \* ----------------------------------------- */
 table {
+  width: 100%;
 
   tbody {
     td, tr {
@@ -607,6 +632,15 @@ table {
 
   a {
     display: block;
+  }
+
+  .button {
+    display: inline-block;
+    width: 50px;
+    margin: .2rem;
+    i {
+      margin-right: 0;
+    }
   }
 }
 

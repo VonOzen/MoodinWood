@@ -1,0 +1,11 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Modifier produit : {{ product.name }}{% endblock %}
+
+{% block body %}
+
+<h2>Modifier produit : <strong>{{ product.name }}</strong></h2>
+
+{% include 'admin/product/_form.html.twig' %}
+
+{% endblock %}

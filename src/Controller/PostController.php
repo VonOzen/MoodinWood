@@ -14,7 +14,7 @@ class PostController extends AbstractController
     /**
      * Get all posts
      * 
-     * @Route("/posts/{page<\d+>?1}", name="posts_index")
+     * @Route("/actualites/{page<\d+>?1}", name="posts_index")
      * 
      * @param PostRepository $repo
      * @param Integer $page
@@ -25,7 +25,10 @@ class PostController extends AbstractController
     {
         $pagination->setEntityClass(Post::class)
                    ->setCurrentPage($page)
-                   ->setLimit(4);
+                   ->setLimit(4)
+                   ->setParam(['createdAt' => 'DESC'])
+        ;
+
         return $this->render('post/index.html.twig', [
             'pagination' => $pagination
         ]);
@@ -34,7 +37,7 @@ class PostController extends AbstractController
     /**
      * Get a single post based on the slug
      * 
-     * @Route("/posts/{slug}", name="posts_show")
+     * @Route("/actualites/{slug}", name="posts_show")
      * 
      * @param Post $post
      * @return Response

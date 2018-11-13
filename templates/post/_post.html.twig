@@ -1,6 +1,6 @@
 <article class="post">
   <h3 class="post-title">{{ post.title }}</h3>
-  <p class="date">{{ post.createdAt|date('d-m-Y') }}</p>
+  <p class="date">{{ post.formattedDate }}</p>
   <figure>
     <a href="{{ path('posts_show', {'slug': post.slug}) }}">
       <img src="{{ post.coverImage }}" alt="Image de l'article : {{ post.title }}">

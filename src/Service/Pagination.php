@@ -12,6 +12,7 @@ class Pagination
   private $entityClass;
   private $limit = 10;
   private $currentPage = 1;
+  private $param = ['id' => 'DESC'];
   private $manager;
   private $twig;
   private $route;
@@ -51,7 +52,7 @@ class Pagination
 
     # get repository
     $repo = $this->manager->getRepository($this->entityClass);
-    $data = $repo->findBy([], ['id' => 'DESC'], $this->limit, $offset);
+    $data = $repo->findBy([], $this->param, $this->limit, $offset);
 
     # send data
     return $data;
@@ -118,5 +119,25 @@ class Pagination
 
   public function getTemplatePath() {
     return $this->templatePath;
+  }
+
+  /**
+   * Get the value of param
+   */ 
+  public function getParam()
+  {
+    return $this->param;
+  }
+
+  /**
+   * Set the value of param
+   *
+   * @return  self
+   */ 
+  public function setParam($param)
+  {
+    $this->param = $param;
+
+    return $this;
   }
 }

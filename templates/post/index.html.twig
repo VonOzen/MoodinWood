@@ -4,11 +4,13 @@
 
 {% block body %}
 
-<h2>Actualités Mood in Wood</h2>
 
 <section class="posts">
+
+    <h2>Actualités Mood in Wood</h2>
+    
     {% for post in pagination.data %}
-        {% include 'partials/posts/_post.html.twig' %}
+        {% include 'post/_post.html.twig' %}
     {% endfor %}
 </section>
 

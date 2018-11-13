@@ -168,4 +168,18 @@ class Post
 
         return $this;
     }
+
+    /**
+     * Get the createdAt date in french
+     *
+     * @return string
+     */
+    public function getFormattedDate(): string
+    {
+        $months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+
+        $month = intval($this->getCreatedAt()->format('m'));
+
+        return $this->getCreatedAt()->format('d') . ' ' . $months[$month - 1] . ' ' . $this->getCreatedAt()->format('Y');
+    }
 }

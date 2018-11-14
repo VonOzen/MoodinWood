@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use App\Repository\ProductRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,6 +40,21 @@ class ProductController extends AbstractController
     {
         return $this->render('product/index.html.twig', [
             'products' => $this->repo->findAllInStock()
+        ]);
+    }
+
+    /**
+     * Show a single product
+     * 
+     * @Route("/creation/{slug}", name="products_show")
+     *
+     * @param Product $product
+     * @return Response
+     */
+    public function show(Product $product): Response
+    {
+        return $this->render('product/show.html.twig', [
+            'product' => $product
         ]);
     }
 }

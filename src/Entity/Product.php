@@ -4,10 +4,13 @@ namespace App\Entity;
 
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
- * @
+ * @UniqueEntity(fields="name", message="Un produit possède déjà ce nom")
+ * @ORM\HasLifecycleCallbacks
  */
 class Product
 {
@@ -28,6 +31,8 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=3, max=100, minMessage="Le nom du produit doit faire au minimum 3 caractères", maxMessage="Le nom du produit doit faire au maximum 100 caractères ")
+     * @Assert\NotBlank(message="Le nom ne peut être vide")
      */
     private $name;
 
@@ -43,6 +48,8 @@ class Product
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank(message="le prix doit être renseigné")
+     * @Assert\Range(min=1, max=9999, minMessage="Le prix doit être supérieur à 1€", maxMessage="Le prix doit être inférieur à 9999€")
      */
     private $price;
 
@@ -50,6 +57,11 @@ class Product
      * @ORM\Column(type="boolean")
      */
     private $inStock;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
 
     public function getId(): ?int
     {
@@ -133,6 +145,27 @@ class Product
 
     public function getSlug(): ?string
     {
-        return (new Slugify())->slugify($this->getName());
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+
+    /**
+     * Initialize slug base on the product's name - Using Slugify
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     * @return void
+     */
+    public function initializeSlug()
+    {
+        if(empty($this->slug)) {
+            $this->slug = (new Slugify())->slugify($this->name);
+        }
     }
 }

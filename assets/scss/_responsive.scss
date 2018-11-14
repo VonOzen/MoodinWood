@@ -102,6 +102,12 @@ $medium: 1024px;
       }
     }
   }
+
+  form {
+    .form-group {
+      flex-direction: column;
+    }
+  }
 }
 
 @media only screen and (min-width: $small + 1px) and (max-width: $medium) {

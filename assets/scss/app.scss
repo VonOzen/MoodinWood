@@ -50,6 +50,10 @@ em {
   font-style: italic;
 }
 
+hr {
+  margin: 1rem 0;
+}
+
 .wrapper {
   width: 70%;
   margin: 0 auto;
@@ -455,7 +459,24 @@ form {
     }
   }
 
-  input, textarea {
+  .form-row {
+    display: block;
+    width: 100%;
+  }
+
+  .form-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+
+    div {
+      text-align: center;
+      width: 100%;
+      margin: 0 1rem;
+    }
+  }
+
+  input, textarea, select {
     display: block;
     width: 100%;
 
@@ -481,12 +502,29 @@ form {
     &::placeholder {
       font-family: $opensans;
     }
-  }
 
+  }
+  
   textarea {
     min-height: 200px;
   }
+  
+  /** ERREURS VALIDATIONS **/
+  ul {
+    li {
+      font: {
+        size: .8rem;
+      }
+      color: $danger;
 
+      &::before {
+        content: 'Erreur:';
+        color: $danger;
+        font-weight: bolder;
+        margin-right: .3rem;
+      }
+    }
+  }
 }
 
 .button {

@@ -52,11 +52,43 @@ class AdminProductController extends AbstractController
         $pagination->setEntityClass(Product::class)
                    ->setCurrentPage($page)
                    ->setLimit(20)
-                   ->setParam(['id' => 'ASC'])
+                   ->setParam(['id' => 'DESC'])
         ;
 
         return $this->render('admin/product/index.html.twig', [
             'pagination' => $pagination
+        ]);
+    }
+
+
+    /**
+     * Create new product for Admin
+     * 
+     * @Route("/admin/creations/new", name="admin_products_new")
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function new(Request $request): Response
+    {
+        $product = new Product();
+        $form    = $this->createForm(ProductType::class, $product);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $this->manager->persist($product);
+            $this->manager->flush();
+
+            $this->addFlash(
+                'success',
+                "Le produit <strong>{$product->getName()}</strong> a été enregistré avec succès"
+            );
+
+            return $this->redirectToRoute('admin_products_index');
+        }
+
+        return $this->render('admin/product/new.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 

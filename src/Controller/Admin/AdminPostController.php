@@ -42,7 +42,7 @@ class AdminPostController extends AbstractController
      * 
      * @return Response
      */
-    public function create(Request $request, ObjectManager $manager)
+    public function new(Request $request, ObjectManager $manager)
     {
         $post = new Post();
         $form = $this->createForm(PostType::class, $post);

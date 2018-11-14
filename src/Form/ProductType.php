@@ -7,6 +7,12 @@ use App\Form\ApplicationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ProductType extends ApplicationType
 {
@@ -14,19 +20,34 @@ class ProductType extends ApplicationType
     {
         $builder
             ->add(
-                'name'
+                'name',
+                TextType::class,
+                $this->setAttributes("Nom du produit", "Nom du produit")
             )
             ->add(
-                'description'
+                'description',
+                TextareaType::class,
+                $this->setAttributes("Description", "Description du produit")
             )
             ->add(
-                'type'
+                'price',
+                NumberType::class,
+                $this->setAttributes("Prix", "Prix unitaire du produit")
             )
             ->add(
-                'price'
+                'type',
+                ChoiceType::class,
+                [
+                    'label'   => 'Type du produit',
+                    'choices' => $this->getChoices()
+                ]
             )
             ->add(
-                'inStock'
+                'inStock',
+                CheckboxType::class,
+                [
+                    'required' => false
+                ]
             )
         ;
     }
@@ -37,5 +58,17 @@ class ProductType extends ApplicationType
             'data_class'         => Product::class,
             'translation_domain' => 'forms'
         ]);
+    }
+
+    private function getChoices()
+    {
+        $choices = Product::TYPE;
+        $output  = [];
+
+        foreach($choices as $k => $v) {
+            $output[$v] = $k;
+        }
+
+        return $output;
     }
 }

@@ -1,11 +1,13 @@
 <article class="post">
   <h3 class="post-title">{{ post.title }}</h3>
   <p class="date">{{ post.formattedDate }}</p>
-  <figure>
-    <a href="{{ path('posts_show', {'slug': post.slug}) }}">
-      <img src="{{ post.coverImage }}" alt="Image de l'article : {{ post.title }}">
-    </a>
-  </figure>
+  {% if post.filename %}
+    <figure>
+        <a href="{{ path('posts_show', {'slug': post.slug}) }}">
+          <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('medium') }}" alt="Image de l'article : {{ post.title }}">
+        </a>
+    </figure>
+  {% endif %}
   <p class="post-preview">{{ post.preview }}</p>
   <a href="{{ path('posts_show', {'slug': post.slug}) }}" class="post-link">Lire la suite <i class="fas fa-arrow-right"></i></a>
 </article>

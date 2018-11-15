@@ -27,7 +27,8 @@ class AdminPostController extends AbstractController
     {
         $pagination->setEntityClass(Post::class)
                    ->setCurrentPage($page)
-                   ->setLimit(10);
+                   ->setLimit(10)
+                   ->setParam(['createdAt' => 'DESC']);
 
         return $this->render('admin/post/index.html.twig', [
             'pagination' => $pagination

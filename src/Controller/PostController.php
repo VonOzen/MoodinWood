@@ -25,7 +25,7 @@ class PostController extends AbstractController
     {
         $pagination->setEntityClass(Post::class)
                    ->setCurrentPage($page)
-                   ->setLimit(4)
+                   ->setLimit(6)
                    ->setParam(['createdAt' => 'DESC'])
         ;
 

@@ -7,7 +7,7 @@ use App\Form\ApplicationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
@@ -32,9 +32,12 @@ class PostType extends ApplicationType
                 $this->setAttributes("Contenu de l'article", "Texte principal de l'article")
             )
             ->add(
-                'coverImage',
-                UrlType::class,
-                $this->setAttributes("URL de l'image", "URL vers l'image de couverture")
+                'imageFile',
+                FileType::class,
+                [
+                    'required' => false,
+                    'label'    => 'Upload une image'
+                ]
             )
         ;
     }

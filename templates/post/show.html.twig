@@ -6,7 +6,11 @@
 <section class="wrapper">
   <article class="post-details">
     <h1>{{ post.title }}</h1>
-    <img src="{{ post.coverImage }}" alt="">
+    {% if post.filename %}
+      <figure> 
+          <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('medium') }}" alt="Image de l'article : {{ post.title }}">
+      </figure>
+    {% endif %}
     <div>
       {{ post.content|nl2br }}
       <span class="date">Posté le {{ post.formattedDate }}</span>

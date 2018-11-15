@@ -42,7 +42,6 @@ class AppFixtures extends Fixture
            ->setSlug($slugify->slugify($title))
            ->setPreview($faker->paragraph())
            ->setContent($faker->paragraphs(mt_rand(3,6), true))
-           ->setCoverImage($faker->imageUrl(600,400))
            ->setCreatedAt($faker->dateTimeBetween('-6months'));
 
       $manager->persist($post);

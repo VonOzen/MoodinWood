@@ -7,5 +7,16 @@
 
 <h1>Coucou</h1>
 
+<!-- Flash messages -->
+{% for label, messages in app.flashes %}
+<div class="container">
+    <div class="alert {{ label }}">
+        {% for message in messages %}
+            {{ message | raw }}
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+
 
 {% endblock %}

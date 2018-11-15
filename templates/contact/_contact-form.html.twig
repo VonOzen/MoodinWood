@@ -1,0 +1,10 @@
+<div id="contact-form">
+  {{ form_start(form) }}
+  <div class="form-group">
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.lastName) }}
+  </div>
+  {{ form_rest(form) }}
+  <button type="submit" class="button primary"><i class="fas fa-envelope"></i>Envoyer le message</button>
+  {{ form_end(form) }}
+</div>

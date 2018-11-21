@@ -682,6 +682,36 @@ table {
   }
 }
 
+.pictures-gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  .picture-control {
+    display: flex;
+    flex-direction: column;
+    margin: .4rem;
+    position: relative;
+
+    img {
+      border-radius: .25rem;
+    }
+
+    a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: .4rem;
+
+      i {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
 
 
 /* ----------------------------------------- *\

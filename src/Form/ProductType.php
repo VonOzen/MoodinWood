@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ProductType extends ApplicationType
 {
@@ -47,6 +48,14 @@ class ProductType extends ApplicationType
                 CheckboxType::class,
                 [
                     'required' => false
+                ]
+            )
+            ->add(
+                'pictureFiles',
+                FileType::class,
+                [
+                    'required' => false,
+                    'multiple' => true
                 ]
             )
         ;

@@ -15,4 +15,33 @@ document.addEventListener("DOMContentLoaded", function() {
     menu.classList.remove('is-open');
   });
 
+
+// Suppression des images produits
+document.querySelectorAll('[data-delete]').forEach(function(a){
+  a.addEventListener('click', function(event){
+    event.preventDefault();
+    fetch(a.getAttribute('href'), {
+      method: 'DELETE',
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({'_token': a.dataset.token})
+    })//fin fetch
+    .then(function(response){
+      return response.json()
+    })//fin then
+    .then(function(data){
+      if (data.success) {
+        a.parentNode.parentNode.removeChild(a.parentNode)
+      } else {
+        alert(data.error)
+      }
+    })//fin second then
+    .catch(function(error){
+      alert(error)
+    })//fin catch
+  });//fin callback click
+});//fin foreacg
+
 });

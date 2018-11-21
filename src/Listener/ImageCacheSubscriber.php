@@ -3,6 +3,7 @@
 namespace App\Listener;
 
 use App\Entity\Post;
+use App\Entity\Picture;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
@@ -40,7 +41,7 @@ class ImageCacheSubscriber implements EventSubscriber
   {
     $entity = $args->getEntity();
     
-    if (!$entity instanceof Post) {
+    if (!$entity instanceof Post || !$entity instanceof Picture) {
       return;
     }
 
@@ -51,7 +52,7 @@ class ImageCacheSubscriber implements EventSubscriber
   {
     $entity = $args->getEntity();
 
-    if (!$entity instanceof Post) {
+    if (!$entity instanceof Post || !$entity instanceof Picture) {
       return;
     }
 

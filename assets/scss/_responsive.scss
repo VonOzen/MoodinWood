@@ -108,6 +108,10 @@ $medium: 1024px;
       flex-direction: column;
     }
   }
+
+  .pictures-gallery {
+    justify-content: center;
+  }
 }
 
 @media only screen and (min-width: $small + 1px) and (max-width: $medium) {

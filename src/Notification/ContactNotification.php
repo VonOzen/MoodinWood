@@ -27,7 +27,7 @@ class ContactNotification
   public function notify(Contact $contact)
   {
     $message = (new \Swift_Message('Mood in Wood Contact : '. $contact->getSubject()))
-          ->setFrom('noreply@moodinwood.com')
+          ->setFrom('noreply@moodinwood.fr')
           ->setTo('contact@moodinwood.fr')
           ->setReplyTo($contact->getEmail())
           ->setBody($this->renderer->render('emails/contact.html.twig', [

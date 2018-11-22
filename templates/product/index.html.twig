@@ -4,6 +4,11 @@
 
 {% block body %}
     <section class="products">
+
+        {{ form_start(form, { 'attr' : {'id': 'search-form'}}) }}
+            {{ form_row(form.maxPrice) }}
+            <button type="submit" class="button primary"><i class="fas fa-search"></i> Rechercher</button>
+        {{ form_end(form) }}
     
         <h2>Toutes les créations Mood in Wood</h2>
 

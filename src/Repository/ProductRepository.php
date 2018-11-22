@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Product;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\ProductSearch;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Product|null find($id, $lockMode = null, $lockVersion = null)
@@ -53,12 +54,17 @@ class ProductRepository extends ServiceEntityRepository
      *
      * @return Product[]
      */
-    public function findAllInStock()
+    public function findAllInStock(ProductSearch $search)
     {
-        return $this->createQueryBuilder('p')
-                    ->andWhere('p.inStock = true')
-                    ->getQuery()
-                    ->getResult()
-        ;
+        $query = $this->createQueryBuilder('p')
+                      ->andWhere('p.inStock = true');
+
+        if ($search->getMaxPrice()) {
+            $query = $query->andWhere('p.price <= :maxprice')
+                           ->orderBy('p.price', 'ASC')
+                           ->setParameter('maxprice', $search->getMaxPrice());
+        }
+
+        return $query->getQuery()->getResult();
     }
 }

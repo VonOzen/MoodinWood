@@ -400,6 +400,22 @@ footer {
   }
 }
 
+#search-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+
+  input, button {
+    margin: 0;
+  }
+
+  button {
+    margin: 0 0 0 1rem;
+  }
+}
+
 /* ----------------------------------------- *\
     PAGINATION
 \* ----------------------------------------- */
@@ -680,6 +696,10 @@ table {
       margin-right: 0;
     }
   }
+}
+
+.micro-pic {
+  border-radius: 50%;
 }
 
 .pictures-gallery {

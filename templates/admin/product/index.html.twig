@@ -13,6 +13,7 @@
     <table>
     <thead>
         <td>N°</td>
+        <td>Image</td>
         <td>Nom</td>
         <td>Type</td>
         <td>Prix</td>
@@ -23,6 +24,11 @@
         {% for product in pagination.data %}
             <tr>
                 <td>{{ product.id }}</td>
+                <td>
+                {% if product.picture %}
+                    <img src="{{ vich_uploader_asset(product.picture, 'imageFile') | imagine_filter('micro') }}" alt="Image du produit {{ product.name }}" class="micro-pic">
+                {% endif %}
+                </td>
                 <td><strong>{{ product.name }}</strong></td>
                 <td>{{ product.productType }}</td>
                 <td>{{ product.formattedPrice }}&euro;</td>

@@ -88,7 +88,9 @@ class AdminProductController extends AbstractController
         }
 
         return $this->render('admin/product/new.html.twig', [
-            'form' => $form->createView()
+            'form'    => $form->createView(),
+            'product' => $product,
+            'edit'    => false
         ]);
     }
 
@@ -120,7 +122,8 @@ class AdminProductController extends AbstractController
 
         return $this->render('admin/product/edit.html.twig', [
             'product' => $product,
-            'form'    => $form->createView()
+            'form'    => $form->createView(),
+            'edit'    => true
         ]);
     }
 

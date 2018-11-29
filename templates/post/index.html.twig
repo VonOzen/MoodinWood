@@ -5,9 +5,11 @@
 {% block body %}
 
 
+{% include 'partials/sidebar-news.html.twig' %}
 <section class="posts">
 
     <h2>Actualités Mood in Wood</h2>
+
     
     {% for post in pagination.data %}
         {% include 'post/_post.html.twig' %}

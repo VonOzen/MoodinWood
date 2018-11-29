@@ -30,7 +30,8 @@ class PostController extends AbstractController
         ;
 
         return $this->render('post/index.html.twig', [
-            'pagination' => $pagination
+            'pagination' => $pagination,
+            'sidebar'    => true
         ]);
     }
 

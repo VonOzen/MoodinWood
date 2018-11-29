@@ -74,7 +74,7 @@ class Product
     /**
      * @var mixed
      * @Assert\All({
-     *  @Assert\Image(mimeTypes="image/jpeg", mimeTypesMessage="Les images doivent être au format jpeg")
+     * @Assert\Image(mimeTypes="image/jpeg", mimeTypesMessage="Les images doivent être au format jpeg", maxSize="2M", maxSizeMessage="Le fichier doit faire moins de 2Mo")
      * })
      */
     private $pictureFiles;

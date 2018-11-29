@@ -10,8 +10,9 @@
   {{ form_row(form.type) }}
   {{ form_row(form.inStock) }}
 </div>
-{{ form_row(form.pictureFiles) }}
+
 <div class="pictures-gallery">
+  
   {% for picture in product.pictures %}
     <div class="picture-control">
       <img src="{{ vich_uploader_asset(picture, 'imageFile') | imagine_filter('productthumb')}}" alt="Image du produit {{ product.name }}">
@@ -25,5 +26,21 @@
     </div>
   {% endfor %}
 </div>
-<button type="submit" class="button primary"><i class="fas fa-edit"></i>Modifier le produit</button>
+
+<div class="form-row">
+  {{ form_row(form.pictureFiles) }}
+</div>
+
+{% if edit %}
+  {{ 'Modifier le produit'|button({
+    'type': 'submit',
+    'icon': 'fas fa-edit'
+  }) }}
+{% else %}
+  {{ 'Ajouter le produit'|button({
+    'type': 'submit',
+    'icon': 'fas fa-plus'
+  }) }}
+{% endif %}
+
 {{ form_end(form) }}

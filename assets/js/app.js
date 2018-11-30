@@ -1,3 +1,6 @@
+require('@fortawesome/fontawesome-free/css/all.min.css');
+require('@fortawesome/fontawesome-free/js/all.js');
+
 document.addEventListener("DOMContentLoaded", function() {
   
   const hamburger = document.getElementById('hamburger-menu');

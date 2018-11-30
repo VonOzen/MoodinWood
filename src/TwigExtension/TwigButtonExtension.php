@@ -20,18 +20,20 @@ class TwigButtonExtension extends AbstractExtension
     $defaultOptions = [
       'color' => 'primary',
       'icon'  => '',
-      'type'  => ''    
+      'type'  => '',
+      'size'  => 'fa-lg'    
     ];
 
     $options = array_merge($defaultOptions, $options);
 
-    $tpl = '<button type="%s" class="button %s"><i class="%s"></i>%s</button>';
+    $tpl = '<button type="%s" class="button %s"><i class="%s %s"></i>%s</button>';
 
     return sprintf(
       $tpl,
       $options['type'],
       $options['color'],
       $options['icon'],
+      $options['size'],
       $content
     );
   }

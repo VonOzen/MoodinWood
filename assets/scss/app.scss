@@ -35,6 +35,18 @@ main {
   background-color: $light;
 }
 
+section {
+  width: 100%;
+}
+
+.with-sidebar {
+  flex-basis: 75%;
+}
+
+aside {
+  flex-basis: 25%;
+}
+
 ul {
   margin-block-end: 0;
   margin-block-start: 0;
@@ -302,7 +314,16 @@ footer {
 aside {
   min-height: 100vh;
   flex-basis: 15%;
-  background: #000;
+  background: $beige;
+  
+  nav {
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
 }
 /* ----------------------------------------- *\
     POSTS PAGES
@@ -364,6 +385,7 @@ aside {
 }
 
 .date {
+  display: block;
   margin: .75rem 0;
   color: $mid-grey;
   letter-spacing: .15rem;
@@ -419,12 +441,12 @@ aside {
   align-items: flex-end;
   width: 100%;
 
-  input, button {
-    margin: 0;
+  input, button, select {
+    margin: 0 .5rem 0 0;
   }
 
   button {
-    margin: 0 0 0 1rem;
+    margin: 0 0 0 .5rem;
   }
 }
 

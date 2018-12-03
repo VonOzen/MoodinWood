@@ -39,3 +39,6 @@ services:
 
     App\TwigExtension\TwigButtonExtension:
         tags: ['twig.extension']
+
+    App\TwigExtension\FrenchMonthExtension:
+        tags: ['twig.extension']

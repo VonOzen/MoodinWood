@@ -31,7 +31,7 @@ class PostController extends AbstractController
 
         return $this->render('post/index.html.twig', [
             'pagination' => $pagination,
-            'sidebar'    => true
+            'months'     => $repo->findPostMonth()
         ]);
     }
 
@@ -47,6 +47,22 @@ class PostController extends AbstractController
     {
         return $this->render('post/show.html.twig', [
             'post' => $post
+        ]);
+    }
+
+    /**
+     * Get all posts based on year - month
+     * 
+     * @Route("/actualites/{year}/{month}", name="posts_by_month")
+     *
+     * @return void
+     */
+    public function postByMonth(PostRepository $repo, Int $year, Int $month, Pagination $pagination)
+    {
+        return $this->render('post/index.html.twig', [
+            'posts'  => $repo->findByDate($year, $month),
+            'months' => $repo->findPostMonth(),
+            'pagination' => false
         ]);
     }
 }

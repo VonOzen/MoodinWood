@@ -259,4 +259,8 @@ class Product
 
         return $this;
     }
+
+    public function getTypeArray() : Array {
+        return array_flip(self::TYPE);
+    }
 }

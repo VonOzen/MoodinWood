@@ -6,6 +6,7 @@
     <section class="products">
 
         {{ form_start(form, { 'attr' : {'id': 'search-form'}}) }}
+            {{ form_row(form.productType) }}
             {{ form_row(form.maxPrice) }}
             {{ 'Rechercher' | button({'color': 'primary', 'type': 'submit', 'icon': 'fas fa-search'}) }}
         {{ form_end(form) }}

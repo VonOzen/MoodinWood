@@ -3,7 +3,13 @@
   <nav>
 
     <ul>
-      
+      {% for month in months %}
+        <li>
+          <a href="{{ path('posts_by_month', { 'year': month|slice(3,7), 'month': month|slice(0,2) }) }}">
+            {{ month|frMonth }}
+          </a>
+        </li>
+      {% endfor %}
     </ul>
 
   </nav>

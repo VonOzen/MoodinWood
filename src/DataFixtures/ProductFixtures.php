@@ -3,7 +3,7 @@
 namespace App\DataFixtures;
 
 use Faker\Factory;
-use App\Entity\Type;
+use App\Entity\Category;
 use App\Entity\Product;
 use Cocur\Slugify\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -15,12 +15,12 @@ class ProductFixtures extends Fixture
   {
     $faker = Factory::create('fr_FR');
 
-    $types = [];
+    $categories = [];
 
     for ($i=0; $i<=6; $i++) {
-      $type = new Type();
-      $type->setName($faker->words(1, true));
-      $types[] = $type;
+      $category = new Category();
+      $category->setName($faker->words(1, true));
+      $categories[] = $category;
     }
 
     for ($i=0; $i < 12; $i++) { 
@@ -28,7 +28,7 @@ class ProductFixtures extends Fixture
 
       $product->setName($faker->words(2, true))
               ->setDescription($faker->paragraphs(mt_rand(2,4), true))
-              ->setProductType($faker->randomElement($types))
+              ->setCategory($faker->randomElement($categories))
               ->setPrice($faker->numberBetween(5,300))
               ->setInStock(true);
 

@@ -4,11 +4,12 @@
 
 {% block body %}
 
+<h2>Actualités Mood in Wood</h2>
+
 {% include 'partials/sidebar-news.html.twig' %}
 
 <section class="posts with-sidebar">
 
-    <h2>Actualités Mood in Wood</h2>
 
     {% if pagination %}
         
@@ -16,7 +17,6 @@
             {% include 'post/_post.html.twig' %}
         {% endfor %}
 
-        {{ pagination.display() }}
 
     {% else %}
         {% for post in posts %}
@@ -25,6 +25,9 @@
     {% endif %}
 </section>
 
+    {% if pagination %}
+        {{ pagination.display() }}
+    {% endif %}
 
 
 {% endblock %}

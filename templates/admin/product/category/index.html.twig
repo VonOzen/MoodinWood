@@ -1,0 +1,38 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Toutes les catégories de produits{% endblock %}
+
+{% block body %}
+    <h1>Administration des catégories de produits</h1>
+
+    <a href="{{ path('admin_categories_new') }}" class="button primary"><i class="fas fa-plus"></i>Ajouter une catégorie</a>
+
+    <hr>
+
+    <table>
+    
+    <thead>
+        <td>Catégories de produits existantes</td>
+        <td>Actions</td>
+    </thead>
+
+    <tbody>
+    
+    </tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.name }}</td>
+                <td>
+                    <a href="{{ path('admin_categories_edit', {'name': category.name}) }}" class="button info">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{{ path('admin_categories_delete', {'name': category.name}) }}" class="button danger">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</section>
+{% endblock %}

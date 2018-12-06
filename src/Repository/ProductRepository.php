@@ -67,14 +67,13 @@ class ProductRepository extends ServiceEntityRepository
                            ->setParameter('maxprice', $search->getMaxPrice());
         }
 
-        if ($search->getProductType()) {
-            $query = $query->andWhere('p.type = :type')
+        if ($search->getCategory()) {
+            $query = $query->andWhere('p.category = :category')
                            ->orderBy('p.price', 'ASC')
-                           ->setParameter('type', $search->getProductType());
-            /*if ($query->getQuery()->getResult()) {
-                return 'Aucun produit ne correspond à vos recherches';
-            }*/
-            dump(empty($query->getQuery()->getResult()));
+                           ->setParameter('category', $search->getCategory());
+            if (empty($query->getQuery()->getResult())) {
+                return "Aucun produit n'a été trouvé.";
+            }
         }
 
         return $query->getQuery()->getResult();

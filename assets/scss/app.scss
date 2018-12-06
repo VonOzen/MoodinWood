@@ -28,21 +28,14 @@ body {
 }
 
 main {
-  
+  display: flex;
+  flex-wrap: wrap;
   flex: 1 1 auto;
   background-color: $light;
 }
 
 section {
   width: 100%;
-}
-
-.with-sidebar {
-  flex-basis: 75%;
-}
-
-aside {
-  flex-basis: 25%;
 }
 
 ul {
@@ -315,7 +308,20 @@ aside {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      align-items: center;
+      align-items: flex-start;
+      li {
+        a {
+          color: $dark;
+          text-decoration: underline;
+          text-transform: lowercase;
+          font-variant: normal;
+          line-height: 1rem;
+          font: {
+            size: 1rem;
+            family: $lato;
+          }
+        }
+      }
     }
   }
 }
@@ -327,7 +333,8 @@ aside {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .post {

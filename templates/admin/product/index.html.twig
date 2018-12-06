@@ -7,6 +7,7 @@
     <h1>Administration des produits</h1>
 
     <a href="{{ path('admin_products_new') }}" class="button primary"><i class="fas fa-plus"></i>Ajouter un produit</a>
+    <a href="{{ path('admin_categories_new') }}" class="button secondary"><i class="fas fa-plus"></i>Ajouter une catégorie</a>
 
     <hr>
 
@@ -15,7 +16,7 @@
         <td>N°</td>
         <td>Image</td>
         <td>Nom</td>
-        <td>Type</td>
+        <td>Catégorie</td>
         <td>Prix</td>
         <td>En stock</td>
         <td>Actions</td>
@@ -32,7 +33,7 @@
                 {% endif %}
                 </td>
                 <td><strong>{{ product.name }}</strong></td>
-                <td>{{ product.productType.name }}</td>
+                <td>{{ product.category.name }}</td>
                 <td>{{ product.formattedPrice }}&euro;</td>
                 <td><em>{{ product.isInStock }}</em></td>
                 <td>

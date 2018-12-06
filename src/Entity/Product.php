@@ -17,13 +17,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Product
 {
-    const TYPE = [
-        0 => 'Bague',
-        1 => 'Boucle',
-        2 => 'Ustensile',
-        3 => 'Bouton',
-        4 => 'Autre'
-    ];
 
     /**
      * @ORM\Id()
@@ -75,9 +68,9 @@ class Product
     private $pictureFiles;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="products", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products", cascade={"persist"})
      */
-    private $productType;
+    private $category;
 
     public function __construct()
     {
@@ -112,23 +105,6 @@ class Product
 
         return $this;
     }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /*public function getProductType(): string
-    {
-        return self::TYPE[$this->type];
-    }*/
 
     public function getPrice(): ?float
     {
@@ -260,18 +236,14 @@ class Product
         return $this;
     }
 
-    public function getTypeArray() : Array {
-        return array_flip(self::TYPE);
+    public function getCategory(): ?Category
+    {
+        return $this->category;
     }
 
-    public function getProductType() : ?Type
+    public function setCategory(?Category $category): self
     {
-        return $this->productType;
-    }
-
-    public function setProductType(?Type $productType): self
-    {
-        $this->productType = $productType;
+        $this->category = $category;
 
         return $this;
     }

@@ -2,14 +2,17 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\TypeRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
+ * @UniqueEntity(fields="name", message="Cette catégorie existe déjà")
  */
-class Type
+class Category
 {
     /**
      * @ORM\Id()
@@ -20,11 +23,12 @@ class Type
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2, max=100, minMessage="Le nom de la catégorie doit faire plus de 2 caractères", maxMessage="Le nom de la catégorie doit faire moins de 100 caractères")
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="productType")
+     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="category")
      */
     private $products;
 
@@ -62,7 +66,7 @@ class Type
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
-            $product->setProductType($this);
+            $product->setCategory($this);
         }
 
         return $this;
@@ -73,8 +77,8 @@ class Type
         if ($this->products->contains($product)) {
             $this->products->removeElement($product);
             // set the owning side to null (unless already changed)
-            if ($product->getProductType() === $this) {
-                $product->setProductType(null);
+            if ($product->getCategory() === $this) {
+                $product->setCategory(null);
             }
         }
 

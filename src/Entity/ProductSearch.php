@@ -17,7 +17,7 @@ class ProductSearch
    *
    * @var int|null
    */
-  private $productType;
+  private $category;
 
 
   /**
@@ -45,25 +45,25 @@ class ProductSearch
   }
 
   /**
-   * Get product type for filtering
+   * Get product category for filtering
    *
    * @return  int|null
    */ 
-  public function getProductType()
+  public function getCategory()
   {
-    return $this->productType;
+    return $this->category;
   }
 
   /**
-   * Set product type for filtering
+   * Set product category for filtering
    *
-   * @param  int|null  $productType  Product type for filtering
+   * @param  int|null  $category  Product category for filtering
    *
    * @return  self
    */ 
-  public function setProductType($productType)
+  public function setCategory($category)
   {
-    $this->productType = $productType;
+    $this->category = $category;
 
     return $this;
   }

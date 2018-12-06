@@ -2,14 +2,15 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Product;
 use App\Entity\ProductSearch;
 use App\Form\ApplicationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ProductSearchType extends ApplicationType
 {
@@ -17,12 +18,17 @@ class ProductSearchType extends ApplicationType
     {
         $builder
             ->add(
-                'productType',
-                ChoiceType::class,
+                'category',
+                EntityType::class,
                 [
-                    'label'    => false,
-                    'required' => false,
-                    'choices'  => (new Product)->getTypeArray()
+                    'class'        => Category::class,
+                    'choice_label' => 'name',
+                    'multiple'     => false,
+                    'label'        => false,
+                    'required'     => false,
+                    'attr'         => [
+                        'placeholder' => 'Catégorie de produit'
+                    ]
                 ]
             )
             ->add(
@@ -42,8 +48,8 @@ class ProductSearchType extends ApplicationType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => ProductSearch::class,
-            'method'     => 'get',
+            'data_class'      => ProductSearch::class,
+            'method'          => 'get',
             'csrf_protection' => false
         ]);
     }

@@ -21,7 +21,9 @@
         <td>Actions</td>
     </thead>
     <tbody>
+    
         {% for product in pagination.data %}
+            
             <tr>
                 <td>{{ product.id }}</td>
                 <td>
@@ -30,7 +32,7 @@
                 {% endif %}
                 </td>
                 <td><strong>{{ product.name }}</strong></td>
-                <td>{{ product.productType }}</td>
+                <td>{{ product.productType.name }}</td>
                 <td>{{ product.formattedPrice }}&euro;</td>
                 <td><em>{{ product.isInStock }}</em></td>
                 <td>

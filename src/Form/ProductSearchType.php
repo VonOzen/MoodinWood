@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Product;
 use App\Entity\ProductSearch;
 use App\Form\ApplicationType;
 use Symfony\Component\Form\AbstractType;
@@ -15,6 +16,15 @@ class ProductSearchType extends ApplicationType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add(
+                'productType',
+                ChoiceType::class,
+                [
+                    'label'    => false,
+                    'required' => false,
+                    'choices'  => (new Product)->getTypeArray()
+                ]
+            )
             ->add(
                 'maxPrice',
                 IntegerType::class,

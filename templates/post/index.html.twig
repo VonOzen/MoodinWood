@@ -4,19 +4,27 @@
 
 {% block body %}
 
-
 {% include 'partials/sidebar-news.html.twig' %}
-<section class="posts">
+
+<section class="posts with-sidebar">
 
     <h2>Actualités Mood in Wood</h2>
 
-    
-    {% for post in pagination.data %}
-        {% include 'post/_post.html.twig' %}
-    {% endfor %}
+    {% if pagination %}
+        
+        {% for post in pagination.data %}
+            {% include 'post/_post.html.twig' %}
+        {% endfor %}
+
+        {{ pagination.display() }}
+
+    {% else %}
+        {% for post in posts %}
+            {% include 'post/_post.html.twig' %}
+        {% endfor %}
+    {% endif %}
 </section>
 
 
-{{ pagination.display() }}
 
 {% endblock %}

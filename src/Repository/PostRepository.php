@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use DoctrineExtensions\Query\Mysql;
 
 /**
  * @method Post|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,4 +48,46 @@ class PostRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * 
+     */
+    public function findPostMonth() : ?Array
+    {
+        $dates = $this->createQueryBuilder('p')
+            ->select('p.createdAt')
+            ->getQuery()
+            ->getResult()
+        ;
+
+        sort($dates);
+
+        $months = [];
+
+        foreach ($dates as $date) {
+            $postDate = date_format($date['createdAt'], 'm Y');
+
+            if(!\in_array($postDate, $months)) {
+                $months[] = $postDate;
+            }
+        }
+
+        return array_reverse($months);
+    }
+
+
+    public function findByDate($year, $month) :?Array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('YEAR(p.createdAt) = :year')
+            ->andWhere('MONTH(p.createdAt) = :month')
+            ->orderBy('p.createdAt', 'DESC')
+            ->setParameters(array(
+                'year' => $year,
+                'month' => $month
+            ))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

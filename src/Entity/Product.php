@@ -45,11 +45,6 @@ class Product
     private $description;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $type;
-
-    /**
      * @ORM\Column(type="float")
      * @Assert\NotBlank(message="le prix doit être renseigné")
      * @Assert\Range(min=1, max=9999, minMessage="Le prix doit être supérieur à 1€", maxMessage="Le prix doit être inférieur à 9999€")
@@ -78,6 +73,11 @@ class Product
      * })
      */
     private $pictureFiles;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="products", cascade={"persist"})
+     */
+    private $productType;
 
     public function __construct()
     {
@@ -125,10 +125,10 @@ class Product
         return $this;
     }
 
-    public function getProductType(): string
+    /*public function getProductType(): string
     {
         return self::TYPE[$this->type];
-    }
+    }*/
 
     public function getPrice(): ?float
     {
@@ -262,5 +262,17 @@ class Product
 
     public function getTypeArray() : Array {
         return array_flip(self::TYPE);
+    }
+
+    public function getProductType() : ?Type
+    {
+        return $this->productType;
+    }
+
+    public function setProductType(?Type $productType): self
+    {
+        $this->productType = $productType;
+
+        return $this;
     }
 }

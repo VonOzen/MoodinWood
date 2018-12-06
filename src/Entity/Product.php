@@ -67,7 +67,7 @@ class Product
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="product", orphanRemoval=true, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="product", orphanRemoval=true, cascade={"persist"}, fetch="EAGER")
      */
     private $pictures;
 

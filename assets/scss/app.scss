@@ -354,9 +354,10 @@ footer {
 }
 
 .date {
+  display: block;
   margin: .75rem 0;
   color: $mid-grey;
-  letter-spacing: .15rem;
+  letter-spacing: .1rem;
   font: {
     family: $opensans;
     size: .8rem;
@@ -408,6 +409,11 @@ footer {
   justify-content: flex-end;
   align-items: flex-end;
   width: 100%;
+
+  padding: 1rem;
+
+  background-color: $beige;
+  border-bottom: 1px solid hsla(0,0%,8%,.3);
 
   input, button {
     margin: 0;

@@ -57,6 +57,8 @@ class ProductRepository extends ServiceEntityRepository
     public function findAllInStock(ProductSearch $search)
     {
         $query = $this->createQueryBuilder('p')
+                      ->select('p', 'pics')
+                      ->leftJoin('p.pictures', 'pics')
                       ->andWhere('p.inStock = true');
 
         if ($search->getMaxPrice()) {

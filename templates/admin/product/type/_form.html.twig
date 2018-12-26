@@ -5,3 +5,30 @@
     </div>
 
 {{ form_end(form) }}
+
+<hr>
+
+<table>
+
+<thead>
+    <td>Type de produits existants</td>
+    <td>Actions</td>
+</thead>
+
+<tbody>
+
+</tbody>
+    {% for type in types %}
+        <tr>
+            <td>{{ type.name }}</td>
+            <td>
+                <a href="{{ path('admin_types_edit', {'name': type.name}) }}" class="button info">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a href="{{ path('admin_types_delete', {'name': type.name}) }}" class="button danger">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>

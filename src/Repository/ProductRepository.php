@@ -66,9 +66,9 @@ class ProductRepository extends ServiceEntityRepository
         }
 
         if ($search->getProductType()) {
-            $query = $query->andWhere('p.type = :type')
+            $query = $query->andWhere('p.productType = :productType')
                            ->orderBy('p.price', 'ASC')
-                           ->setParameter('type', $search->getProductType());
+                           ->setParameter('productType', $search->getProductType());
             /*if ($query->getQuery()->getResult()) {
                 return 'Aucun produit ne correspond à vos recherches';
             }*/

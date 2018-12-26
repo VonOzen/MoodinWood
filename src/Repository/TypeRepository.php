@@ -47,4 +47,18 @@ class TypeRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function getAllTypesName(): ?Array
+    {
+        $types = $this->findAll();
+
+        $names = [];
+
+        foreach ($types as $type) {
+            $names[] = $type->getName();
+        }
+
+        return array_flip($names);
+
+    }
 }

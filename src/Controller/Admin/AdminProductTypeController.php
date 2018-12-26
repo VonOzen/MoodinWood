@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Type;
 use App\Form\ProductTypeType;
 use App\Repository\TypeRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,12 +26,12 @@ class AdminProductTypeController extends AbstractController
      * 
      * @Route("/admin/types", name="admin_types_index")
      *
-     * @return TypeCollection|null
+     * @return Response
      */
-    public function index() : ?TypeCollection
+    public function index() : Response
     {
         return $this->render('admin/product/type/index.html.twig', [
-            'types' => $this->repo->findAll(),
+            'types' => $this->repo->findAll()
         ]);
     }
 
@@ -41,10 +42,11 @@ class AdminProductTypeController extends AbstractController
      *
      * @return Response
      */
-    public function new()
+    public function new(Request $request)
     {
         $type = new Type();
         $form = $this->createForm(ProductTypeType::class, $type);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->manager->persist($type);
@@ -55,11 +57,12 @@ class AdminProductTypeController extends AbstractController
                 "Le type de produit <strong>{$type->getName()}</strong> a été ajouté."
             );
 
-            $this->redirectToRoute('admin_types_index');
+            return $this->redirectToRoute('admin_types_index');
         }
 
         return $this->render('admin/product/type/new.html.twig', [
-            'form' => $form->createView()
+            'form'  => $form->createView(),
+            'types' => $this->repo->findAll()
         ]);
     }
 
@@ -72,14 +75,29 @@ class AdminProductTypeController extends AbstractController
      * @param Type $type
      * @return Response
      */
-    public function edit(Type $type)
+    public function edit(Type $type, Request $request)
     {
         $form = $this->createForm(ProductTypeType::class, $type);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->manager->persist($type);
+            $this->manager->flush();
 
+            $this->addFlash(
+                'success',
+                'Le type de produit a bien été modifié.'
+            );
+
+            return $this->redirectToRoute('admin_types_index');
+        }
+        
 
         return $this->render('admin/product/type/edit.html.twig', [
-            'form' => $form->createView()
+            'form'  => $form->createView(),
+            'type'  => $type,
+            'types' => $this->repo->findAll(),
+            'edit'  => 'Editer le produit'
         ]);
     }
 
@@ -101,6 +119,6 @@ class AdminProductTypeController extends AbstractController
             "Le type de produit \"<strong>{$type->getName()}</strong>\" a été supprimé."
         );
 
-        $this->redirectToRoute('admin_types_index');
+        return $this->redirectToRoute('admin_types_index');
     }
 }

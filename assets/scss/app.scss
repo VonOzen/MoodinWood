@@ -654,37 +654,42 @@ form {
 /* ----------------------------------------- *\
     FLASH
 \* ----------------------------------------- */
-
-.alert {
-  width: 80%;
-  margin: 1.5rem auto 0 auto;
-  padding: 1rem;
-  border-radius: .25rem;
-
-  &.success {
-    background-color: hsl(134, 49%, 85%);
-    color: hsl(134, 61%, 21%);
-    border: 1px solid darken(hsl(134, 49%, 85%));
-  }
-
-  &.danger {
-    background-color: hsl(355, 70%, 91%);
-    color: $danger;
-    border: 1px solid darken(hsl(355, 70%, 91%));
-  }
-
-  &.warning {
-    background-color: hsl(46, 100%, 90%);
-    color: $warning;
-    border: 1px solid darken(hsl(46, 100%, 90%));
-  }
-
-  &.info {
-    background-color: hsl(189, 53%, 88%);
-    color: $info;
-    border: 1px solid darken(hsl(189, 53%, 88%));
+.container {
+  width: 100%;
+  text-align: center;
+  
+  .alert {
+    width: 80%;
+    margin: 1.5rem auto 0 auto;
+    padding: 1rem;
+    border-radius: .25rem;
+  
+    &.success {
+      background-color: hsl(134, 49%, 85%);
+      color: hsl(134, 61%, 21%);
+      border: 1px solid darken(hsl(134, 49%, 85%));
+    }
+  
+    &.danger {
+      background-color: hsl(355, 70%, 91%);
+      color: $danger;
+      border: 1px solid darken(hsl(355, 70%, 91%));
+    }
+  
+    &.warning {
+      background-color: hsl(46, 100%, 90%);
+      color: $warning;
+      border: 1px solid darken(hsl(46, 100%, 90%));
+    }
+  
+    &.info {
+      background-color: hsl(189, 53%, 88%);
+      color: $info;
+      border: 1px solid darken(hsl(189, 53%, 88%));
+    }
   }
 }
+
 
 
 /* ----------------------------------------- *\

@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Entity\Picture;
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\TypeRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -17,14 +18,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Product
 {
-    const TYPE = [
-        0 => 'Bague',
-        1 => 'Boucle',
-        2 => 'Ustensile',
-        3 => 'Bouton',
-        4 => 'Autre'
-    ];
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -109,18 +102,6 @@ class Product
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
 
         return $this;
     }
@@ -258,10 +239,6 @@ class Product
         $this->pictureFiles = $pictureFiles;
 
         return $this;
-    }
-
-    public function getTypeArray() : Array {
-        return array_flip(self::TYPE);
     }
 
     public function getProductType() : ?Type

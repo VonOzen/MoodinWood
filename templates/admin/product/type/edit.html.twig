@@ -4,8 +4,11 @@
 
 {% block body %}
 
-<h2>Modifier le type : <strong>{{ type.name }}</strong></h2>
+    <section>
 
-{% include 'admin/product/type/_form.html.twig' with {'edit': edit} %}
+        <h2>Modifier le type : <strong>{{ type.name }}</strong></h2>
+
+        {% include 'admin/product/type/_form.html.twig' %}
+    </section>
 
 {% endblock %}
